@@ -1,16 +1,26 @@
 import React from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
+import logo from '../assests/logo.png'
 
 function Navigation() {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <LinkContainer to={'/'}>
+                    <Navbar.Brand>
+                        <img src={logo} width="50" height="50" />
+                    </Navbar.Brand>
+                </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">two</Nav.Link>
+                    <Nav className="ms-auto">
+                        <LinkContainer to={'/login'}>
+                            <Nav.Link>Login</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to={'/chat'}>
+                            <Nav.Link>Chat</Nav.Link>
+                        </LinkContainer>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
