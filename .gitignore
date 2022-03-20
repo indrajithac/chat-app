@@ -1,0 +1,10 @@
+/chat-app-backend/node_modules
+/chat-app-backend/server.js
+
+
+
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/chat-app-frontend/node_modules
