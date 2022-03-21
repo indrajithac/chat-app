@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import './Signup.css'
@@ -63,15 +63,15 @@ function Signup() {
               <label htmlFor="image-upload" className='image-upload-label'>
                 <i className='fas fa-plus-circle add-picture-icon'></i>
               </label>
-              <input type="file" id='image-upload' hidden accept='image/png, image/jpeg' onChange={validateImg} />
+              <input type="file" id='image-upload' hidden accept='image/png, image/jpeg' onChange={validateImg} required/>
             </div>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your name" onChange={(e)=>setName(e.target.value)} value={name}/>
+              <Form.Control type="text" placeholder="Enter your name" onChange={(e)=>setName(e.target.value)} value={name} required/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)} value={email}/>
+              <Form.Control type="email" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)} value={email} required/>
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -79,7 +79,7 @@ function Signup() {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password} />
+              <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password} required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
