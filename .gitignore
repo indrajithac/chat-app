@@ -1,5 +1,6 @@
 /chat-app-backend/node_modules
 /chat-app-backend/server.js
+/chat-app-backend/.env
 
 
 
