@@ -34,10 +34,7 @@ const UserSchema = new mongoose.Schema({
     }
 
 }, {
-    minimize: false,
-    // capped: { size: 1024 },
-    // bufferCommands: false,
-    // autoCreate: false
+    minimize: false,    
 })
 
 UserSchema.pre('save', function (next) {
