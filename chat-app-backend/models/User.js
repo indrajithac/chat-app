@@ -21,8 +21,9 @@ const UserSchema = new mongoose.Schema({
         required: [true, "Enter something"],
 
     },
-    picture: {
+    url: {
         type: String
+        
     },
     newMessage: {
         type: Object,
