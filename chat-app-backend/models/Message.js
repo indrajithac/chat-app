@@ -8,5 +8,5 @@ const MessageSchema=new mongoose.Schema({
     to:String
 })
 
-const Message=mongoose.model('Message'.MessageSchema)
+const Message=mongoose.model('Message',MessageSchema)
 module.exports=Message
