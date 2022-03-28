@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { AppContext } from '../context/appContext'
 
 function Sidebar() {
-    const { socket, rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, personalMessage, setPersonalMessage, newMessage, setNewMessage } = useContext(AppContext)
+    const { socket, rooms, setRooms, currentRoom, setCurrentRoom, members,setMembers} = useContext(AppContext)
     socket.off('new-user').on('new-user', (payload) => {
         console.log(payload);
         setMembers(payload)
