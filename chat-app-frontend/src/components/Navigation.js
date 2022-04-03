@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux'
 import { useLogoutUserMutation } from '../services/appApi'
 
 function Navigation() {
-    const [userLogout]=useLogoutUserMutation()
+    const [userLogout] = useLogoutUserMutation()
 
-    async function handleLogout(e){
+    async function handleLogout(e) {
         e.preventDefault()
         await userLogout(user)
 
@@ -25,19 +25,19 @@ function Navigation() {
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
-                        <LinkContainer to={'/login'}>
-                            <Nav.Link>Login</Nav.Link>
-                        </LinkContainer>
+                    <Nav className="ms-auto">                       
                         {!user && (
-                            <LinkContainer to={'/chat'}>
-                                <Nav.Link>Chat</Nav.Link>
+                            <LinkContainer to={'/login'}>
+                                <Nav.Link>Login</Nav.Link>
                             </LinkContainer>
                         )}
+                        <LinkContainer to={'/chat'}>
+                            <Nav.Link>Chat</Nav.Link>
+                        </LinkContainer>
                         {user && (
                             <NavDropdown title={
                                 <>
-                                    <img src={user.url} style={{ width: 30, height: 30, marginRight: 10, objectFit: 'cover',borderRadius:'50%' }}></img>
+                                    <img src={user.url} style={{ width: 30, height: 30, marginRight: 10, objectFit: 'cover', borderRadius: '50%' }}></img>
                                     {user.name}
                                 </>
                             } id="basic-nav-dropdown">
