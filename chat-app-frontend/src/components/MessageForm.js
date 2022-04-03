@@ -21,16 +21,16 @@ function MessageForm() {
 
         return month + "/" + day + "/" + year
     }
-    const todayDate=getFormattedDate()
+    const todayDate = getFormattedDate()
 
-    socket.off('room-messages').on('room-messages',(roomMessages)=>{
+    socket.off('room-messages').on('room-messages', (roomMessages) => {
         setMessages(roomMessages)
-        console.log("room messages:",roomMessages);
+        console.log("room messages:", roomMessages);
     })
 
     function handleSubmit(e) {
         e.preventDefault()
-        if(!message) return
+        if (!message) return
 
         const today = new Date()
         const minutes = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes()
@@ -45,12 +45,24 @@ function MessageForm() {
         <>
             <div className='messages-output'>
                 {!user && <div className='alert alert-danger'>Login to continue</div>}
+
+                {user && messages.map(({ _id: date, messageByDates }, idx) => (
+                    <div key={idx}>
+                        <p className='alert alert-info text-center message-date-indicator'>{date}</p>
+                        {messageByDates?.map(({ content, time, from: sender }, msgIdx) => (
+                            <div className='message' key={msgIdx}>
+                                <p>{content}</p>
+                            </div>
+                        ))}
+
+                    </div>
+                ))}
             </div>
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col md={11}>
                         <Form.Group>
-                            <Form.Control type="text" placeholder='Your message' disabled={!user} value={message} onChange={(e)=>setMessage(e.target.value)}></Form.Control>
+                            <Form.Control type="text" placeholder='Your message' disabled={!user} value={message} onChange={(e) => setMessage(e.target.value)}></Form.Control>
                         </Form.Group>
                     </Col>
                     <Col md={1}>
