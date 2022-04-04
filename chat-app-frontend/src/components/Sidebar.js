@@ -24,8 +24,22 @@ function Sidebar() {
         if (!isPublic) {
             setPersonalMessage(null)
         }
-
     }
+
+    function orderIds(id1, id2) {
+        if (id1 > id2) {
+            return id1 + '-' + id2
+        }else{
+            return id2 + '-' +id1
+        }
+    }
+
+    function handlePersonalMessage(member) {
+        setPersonalMessage(member)
+        const roomId=orderIds(user._id,member._id)
+        joinRoom(roomId,false)
+    }
+
     useEffect(() => {
         if (user) {
             setCurrentRoom("general")
@@ -46,7 +60,7 @@ function Sidebar() {
             <h2>Availabe groups</h2>
             <ListGroup>
                 {rooms.map((room, idx) => {
-                    return <ListGroup.Item key={idx} onClick={() => joinRoom(room)} active={room == currentRoom} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
+                    return <ListGroup.Item key={idx} onClick={() => joinRoom(room)} active={room === currentRoom} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
                         {room} {currentRoom !== room && <span></span>}
                     </ListGroup.Item>
                 })}
@@ -55,7 +69,9 @@ function Sidebar() {
             <h2>Members</h2>
             <ListGroup>
                 {members.map((member) => {
-                    return <ListGroup.Item key={member.id} style={{ cursor: 'pointer' }}> {member.name} </ListGroup.Item>
+                    return <ListGroup.Item key={member.id} style={{ cursor: 'pointer' }} active={personalMessage?._id === member?._id} onClick={() => handlePersonalMessage(member)} disabled={member._id == user._id}>
+                        {member.name}
+                    </ListGroup.Item>
                 })}
 
             </ListGroup>
