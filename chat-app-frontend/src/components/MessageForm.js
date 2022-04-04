@@ -51,7 +51,7 @@ function MessageForm() {
                         <p className='alert alert-info text-center message-date-indicator'>{date}</p>
                         {messageByDates?.map(({ content, time, from: sender }, msgIdx) => (
                             <div className='message' key={msgIdx}>
-                                <p>{content}</p>
+                                <p>{content}:-{sender.name} </p>
                             </div>
                         ))}
 
