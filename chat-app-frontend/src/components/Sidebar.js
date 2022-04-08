@@ -36,9 +36,7 @@ function Sidebar() {
 
     }
     socket.off('notifications').on('notifications', (room) => {
-        if (currentRoom !== room) {
-            dispatch(addNotifications(room))
-        }
+        if (currentRoom !== room) dispatch(addNotifications(room))
     })
 
     function orderIds(id1, id2) {
@@ -87,7 +85,7 @@ function Sidebar() {
                         <Row>
                             <Col xs={2} className="member-status">
                                 <img src={member.url} alt='' className="member-status-img" />
-                                {member.status === "online" ? <i className='fas fa-circle sidebar-online-status'></i> : <i className='fas fa-circle sidebar-offline-status'></i>}
+                                {member.status === "online" ? <i className='fas fa-circle sidebar-online-status'>{user.newMessages[orderIds(user._id, member._id)]}</i> : <i className='fas fa-circle sidebar-offline-status'></i>}
                             </Col>
                             <Col xs={9}>
                                 {member.name}

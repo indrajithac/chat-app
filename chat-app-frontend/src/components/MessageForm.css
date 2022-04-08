@@ -4,3 +4,42 @@
     overflow-y: scroll;
     margin-bottom: 10px;
 }
+.message-date-indicator{
+    width: 150px;
+    margin: 0 auto ;
+}
+
+.message-inner{
+     margin-left: 20px;
+     margin-top: 10px;
+     padding: 10px;
+     min-width: 200px;
+     max-width: 90%;
+     text-align: left;
+     min-height: 80px;
+     display: inline-block;
+     border-radius: 10px;
+     background-color: #d1efdd;
+
+}
+
+.incoming-message .message-inner{
+    background-color: #ffdab9;
+
+}
+
+.incoming-message{
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+}
+
+.message-time{
+    font-size: 0.85rem;
+    font-weight: 300;
+    margin-top: 10px;
+}
+.message-sender{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
