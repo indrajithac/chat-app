@@ -18,7 +18,7 @@ function Signup() {
 
   const [signupUser, { isLoading, error }] = useSignupUserMutation()
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   function validateImg(e) {
     const file = e.target.files[0]
@@ -77,6 +77,7 @@ function Signup() {
               </label>
               <input type="file" id='image-upload' hidden accept='image/png, image/jpeg' onChange={validateImg} required />
             </div>
+            {error && <p className='alert alert-danger'>{error.data}</p>}
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)} value={name} required />
@@ -97,7 +98,7 @@ function Signup() {
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
             <Button variant="primary" type="submit">
-              {uploadingImage ? 'Loading...' : 'Sign up'}
+              {uploadingImage || isLoading ? 'Loading...' : 'Sign up'}
             </Button>
             <div className='py-4'>
               <LinkContainer to="/login">

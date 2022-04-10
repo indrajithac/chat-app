@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Form, Button, Container, Row, Col, Spinner } from 'react-bootstrap'
 import {useLoginUserMutation} from '../services/appApi'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link,useNavigate } from 'react-router-dom'
@@ -30,6 +30,7 @@ function Login() {
         </Col>
         <Col md={7} className="d-flex align-items-center justify-content-center flex-direction-column">
           <Form onSubmit={handleLogin}> 
+          {error && <p className='alert alert-danger'>{error.data}</p>}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} value={email} required />
@@ -46,7 +47,7 @@ function Login() {
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Submit
+              {isLoading ? <Spinner animation='grow'/> : "Login"}
             </Button>
             <div className='py-4'>
               <LinkContainer to="/signup">
