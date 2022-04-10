@@ -56,10 +56,10 @@ function MessageForm() {
                 {user && !personalMessage?._id && <div className='alert alert-info'>Your are in the {currentRoom} room</div>}
                 {user && personalMessage?._id && (
                     <>
-                        <div className='alert alert-info'>
+                        <div className='alert alert-info chat-info'>
                             <div>
                                 {personalMessage.name}
-                                <img src={personalMessage.url} alt=""></img>
+                                <img src={personalMessage.url} alt="" className='chat-profile-picture'></img>
                             </div>
                         </div>
                     </>

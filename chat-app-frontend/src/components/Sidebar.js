@@ -24,11 +24,11 @@ function Sidebar() {
         if (!user) {
             return alert("Login to continue")
         }
-        socket.emit("join-room", room)
+        socket.emit("join-room", room,currentRoom)
         console.log(room);
         setCurrentRoom(room)
 
-        if (!isPublic) {
+        if (isPublic) {
             setPersonalMessage(null)
         }
 
